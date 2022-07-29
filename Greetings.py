@@ -3,7 +3,6 @@
 import sys
 
 import PyQt5.QtWidgets as qw
-import functools
 
 # create a slot function to be connected to signal from button later
 def greet():

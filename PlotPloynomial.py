@@ -5,7 +5,6 @@ from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as NavigationToolbar
 import matplotlib.pyplot as plt
 import numpy as np
-import functools
   
 # main window
 # which inherits QDialog
@@ -27,7 +26,8 @@ class Window(QDialog):
         # it takes the Canvas widget and a parent
         self.toolbar = NavigationToolbar(self.canvas, self)
 
-        # make a bunch of line edits for coefficients       
+        # make a bunch of line edits and labels for coefficients       
+        self.formula = QLabel("<h1>y = C0 + C1<span>&#183;</span>x + C2<span>&#183;</span>x<sup>2</sup> + C3<span>&#183;</span>x<sup>3</sup></h1>")
         self.C0Label = QLabel("C0")
         self.C0Val = QLineEdit("0")
         self.C1Label = QLabel("C1")
@@ -63,6 +63,9 @@ class Window(QDialog):
           
         # adding canvas to the layout
         layout.addWidget(self.canvas)
+
+        # adding function definition as label
+        layout.addWidget(self.formula)
           
         # adding push button to the layout
         layout.addLayout(coefficients)
